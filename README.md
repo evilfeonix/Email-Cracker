@@ -2,7 +2,7 @@
 
 # **Email Cracker v[2.7]**
 
- [Email Cracker v2.7](https://github.com/evilfeonix/EmailCracker/blob/main/banner.png) 
+ [Email Cracker v2.7](https://github.com/evilfeonix/Email-Cracker/blob/main/banner.png) 
 
 
 # **Email Cracker (***Educational Use Only***)**
@@ -77,11 +77,11 @@ python3 cracker.py
 
 ## **Monitor the Cracking Process**
 
- ![brute force attack](https://github.com/evilfeonix/EmailCracker/blob/main/cracker.png) 
+ ![brute force attack](https://github.com/evilfeonix/Email-Cracker/blob/main/cracker.png) 
 
 The tool will log its attempts to find the correct password, simulating a password guessing attack (brute force or dictionary). If the password is found, it will be displayed in the output.
 
- [password is found](https://github.com/evilfeonix/EmailCracker/blob/main/granted.png) 
+ [password is found](https://github.com/evilfeonix/Email-Cracker/blob/main/granted.png) 
 
 ### **Legal Disclaimer**
 
