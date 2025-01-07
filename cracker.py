@@ -256,8 +256,7 @@ def main():
     os.system("clear || cls"),granted()
 
     net=internet()
-    if net:
-    # if not net:
+    if not net:
         time.sleep(1)
         slow(f"\n{error}Please Check Your Internet Connection{stop}")
         os.sys.exit()
