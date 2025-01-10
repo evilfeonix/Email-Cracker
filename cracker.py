@@ -17,7 +17,7 @@
 
 
 from itertools import permutations,combinations
-import os,sys,time,smtplib,argparse,configparser
+import os,sys,time,socket,smtplib,argparse,configparser
 
 
 setup = configparser.ConfigParser()
@@ -96,7 +96,7 @@ def load(y):
 
 def internet():
     try:
-        s = socket(AF_NET, SOCK_STREAM)
+        s = socket.socket(socket.AF_NET, socket.SOCK_STREAM)
         s.connect_ex(("www.google.com",80))
         return True
     except Exception:return False
