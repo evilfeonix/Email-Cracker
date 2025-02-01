@@ -4,9 +4,6 @@
 
  ![Email Cracker v2.7](https://github.com/evilfeonix/Email-Cracker/blob/main/banner.png) 
 
-
-# **Email Cracker (***Educational Use Only***)**
-
 **Email Cracker** is a Python-based project that simulate a password guessing (brute force or dictionary) attack based on email services.
 
  **Email Cracker** aimed to generates a list of password (**wordlist**) based on the victim's informatiom provided and attempt to crack the victim's email passwords.
