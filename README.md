@@ -1,6 +1,6 @@
 ![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg) 
 
-# **Email Cracker v[2.7]**
+# **Email Cracker v[2.8]**
 
  ![Email Cracker v2.7](https://github.com/evilfeonix/Email-Cracker/blob/main/banner.png) 
 
